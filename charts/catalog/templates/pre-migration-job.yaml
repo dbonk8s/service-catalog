@@ -15,7 +15,7 @@ metadata:
 
 ---
 kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: pre-migration-job-account
   labels:
@@ -51,7 +51,7 @@ rules:
 
 ---
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: pre-migration-job-account
   labels:
@@ -94,9 +94,9 @@ spec:
       storage: 200Mi
 {{- if .Values.persistence.storageClass }}
   {{- if (eq "-" .Values.persistence.storageClass) }}
-      storageClassName: ""
+  storageClassName: ""
   {{- else }}
-      storageClassName: "{{ .Values.persistence.storageClass }}"
+  storageClassName: "{{ .Values.persistence.storageClass }}"
   {{- end }}
 {{- end }}
 
